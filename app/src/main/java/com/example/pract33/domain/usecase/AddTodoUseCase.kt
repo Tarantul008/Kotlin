@@ -2,8 +2,10 @@ package com.example.pract33.domain.usecase
 
 import com.example.pract33.domain.repository.TodoRepository
 
-class GetTodosUseCase(
+class AddTodoUseCase(
     private val repository: TodoRepository
 ) {
-    operator fun invoke() = repository.getTodos()
+    suspend operator fun invoke(title: String, description: String) {
+        repository.addTodo(title, description)
+    }
 }
